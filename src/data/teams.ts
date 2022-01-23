@@ -8,7 +8,7 @@ export async function getAllTeams() {
   return await cachedAllTeamsList;
 }
 
-const cachedTeamRecords = {};
+const cachedTeamRecords: any = {};
 
 export async function getTeamById(id: string) {
   let cached = cachedTeamRecords[id];

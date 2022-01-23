@@ -5,28 +5,28 @@ import Deferred from './deferred';
 /**
  * 
  * @param {() => Promise} getData 
- * @param {{
-    stateName: string;
-    otherStatesToMonitor?: unknown[];
-    setter: (arg: x) => void;
-  }} options 
+ * @param {} options 
   @return {void}
  */
-export function useAsyncDataEffect(getData, options) {
+export function useAsyncDataEffect(getData: () => Promise<any>, options: {
+    stateName: string;
+    otherStatesToMonitor?: unknown[];
+    setter: (arg: any) => void;
+  }): void {
   let cancelled = false;
   const { setter, stateName } = options;
   useEffect(() => {
     const d = new Deferred();
 
     getData()
-      .then((jsonData) => {
+      .then((jsonData: any) => {
         if (cancelled) return;
         else d.resolve(jsonData);
       })
       .catch(d.reject);
 
     d.promise
-      .then((data) => {
+      .then((data: any) => {
         if (!cancelled) {
           console.info(
             '%c Updating state: ' + stateName,

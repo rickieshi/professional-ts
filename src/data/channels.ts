@@ -1,6 +1,6 @@
 import { apiCall } from '../utils/networking';
 
-const cachedChannelRecords = {};
+const cachedChannelRecords: any = {};
 
 export async function getChannelById(id: string) {
   let cached = cachedChannelRecords[id];
