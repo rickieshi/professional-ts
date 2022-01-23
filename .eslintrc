@@ -11,7 +11,10 @@
     "eslint:recommended",
     "prettier",
     "plugin:promise/recommended",
-    "plugin:sonarjs/recommended"
+    "plugin:sonarjs/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -49,7 +52,7 @@
       "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "prettier/react"
+        "prettier"
       ]
     },
     /**
@@ -64,7 +67,15 @@
         "postcss.config.js",
         "server/**/*.js"
       ],
-      "env": { "commonjs": true, "node": true }
+      "env": { "commonjs": true, "node": true },
+      "rules": {
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
     },
     /**
      * TYPESCRIPT CODE
@@ -72,7 +83,7 @@
     {
       "files": ["{src,tests}/**/*.{ts,tsx}"],
       "extends": [
-        "prettier/@typescript-eslint",
+        "prettier",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
